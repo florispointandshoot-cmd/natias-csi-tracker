@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#070d24">
+  <meta name="color-scheme" content="dark">
+  <meta name="apple-mobile-web-app-title" content="CSI Tracker">
+  <title>NATIA'S CSI TRACKER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --night: #070d24;
+      --panel: #10183a;
+      --pink: #ff4d94;
+      --gold: #ffd15c;
+      --ice: #8fd8ff;
+      --amber: #ffb15a;
+      --mint: #b6ff8a;
+      --text: #f6f1e6;
+      --muted: #9aa6c9;
+      --line: rgba(143, 216, 255, 0.22);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100dvh;
+      background:
+        radial-gradient(circle at 82% 8%, rgba(255, 236, 170, 0.16), transparent 16%),
+        radial-gradient(circle at 12% 30%, rgba(90, 130, 255, 0.16), transparent 24%),
+        var(--night);
+      color: var(--text);
+      font-family: "IBM Plex Sans", "Avenir Next", sans-serif;
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
+      overflow-x: clip;
+    }
+
+    .poster {
+      width: min(100%, 40rem);
+      margin: 0 auto;
+    }
+
+    header { background: #050816; line-height: 0; }
+
+    h1 {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+    }
+
+    .chase {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    main {
+      padding:
+        0.15rem
+        max(1rem, env(safe-area-inset-right))
+        max(2.2rem, env(safe-area-inset-bottom))
+        max(1rem, env(safe-area-inset-left));
+    }
+
+    .signaal {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin: 0.85rem 0 0;
+      padding: 0.8rem 0.75rem;
+      background: #07140c;
+      color: var(--mint);
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 0.98rem;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: 0.01em;
+      border: 3px solid #14301c;
+      box-shadow: inset 0 0 0 1px rgba(57, 255, 122, 0.35);
+    }
+
+    .signaal-tekst { flex: 1; min-width: 0; }
+
+    .tracker {
+      flex: 0 0 auto;
+      width: 1.35rem;
+      height: 1.35rem;
+      color: var(--mint);
+    }
+
+    .tracker path {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      opacity: 0.18;
+      animation: tracker-pulse 1.5s steps(1, end) infinite;
+    }
+
+    .tracker .dot {
+      fill: currentColor;
+      stroke: none;
+      opacity: 1;
+      animation: none;
+    }
+
+    .tracker path:nth-of-type(1) { animation-delay: 0s; }
+    .tracker path:nth-of-type(2) { animation-delay: 0.375s; }
+    .tracker path:nth-of-type(3) { animation-delay: 0.75s; }
+
+    @keyframes tracker-pulse {
+      0%, 24% { opacity: 0.18; }
+      25%, 100% { opacity: 1; }
+    }
+
+    ol {
+      list-style: none;
+      margin: 0.85rem 0 0;
+      padding: 0;
+    }
+
+    .maand {
+      display: block;
+      margin: 1.35rem 0 0.35rem;
+      padding: 0.35rem 0.1rem 0.45rem;
+      color: var(--pink);
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-bottom: 2px solid rgba(255, 77, 148, 0.45);
+    }
+
+    .maand:first-child { margin-top: 0.55rem; }
+
+    li:not(.maand) {
+      display: flex;
+      flex-direction: column;
+      gap: 0.18rem;
+      padding: 0.9rem 0.15rem;
+      border-bottom: 2px solid var(--line);
+    }
+
+    .wanneer {
+      color: var(--gold);
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .wat {
+      margin: 0;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: clamp(1.15rem, 4.8vw, 1.4rem);
+      font-weight: 600;
+      line-height: 1.35;
+      letter-spacing: 0.01em;
+    }
+
+    .wat span { display: block; }
+    .wat span + span { margin-top: 0.2rem; }
+
+    .Brussel { color: var(--ice); }
+    .Antwerpen { color: var(--amber); }
+
+    .voorbij { opacity: 0.42; }
+
+    footer {
+      margin: 1.1rem 0 0;
+      color: var(--muted);
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    .leeg {
+      margin-top: 1.4rem;
+      color: var(--muted);
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+    }
+
+    @media (min-width: 520px) {
+      main { padding-left: 0.2rem; padding-right: 0.2rem; }
+
+      li:not(.maand) {
+        display: grid;
+        grid-template-columns: 7.2rem minmax(0, 1fr);
+        gap: 0.35rem 0.9rem;
+        align-items: baseline;
+      }
+
+      .signaal { font-size: 1.05rem; }
+      .wanneer { font-size: 1.05rem; }
+    }
+
+    body.locked {
+      overflow: hidden;
+    }
+
+    body.locked .poster {
+      filter: blur(14px) brightness(0.55);
+      transform: scale(1.02);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .gate {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      display: grid;
+      place-items: center;
+      padding: max(1rem, env(safe-area-inset-top)) 1rem max(1rem, env(safe-area-inset-bottom));
+      background: rgba(4, 8, 22, 0.55);
+    }
+
+    body:not(.locked) .gate { display: none; }
+
+    .gate-card {
+      width: min(22rem, 100%);
+      padding: 1.25rem 1.15rem 1.15rem;
+      background: #0b1430;
+      border: 3px solid #2a3d74;
+      border-radius: 10px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    .gate-card #gate-title {
+      margin: 0;
+      color: var(--text);
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .gate-card form {
+      display: grid;
+      gap: 0.65rem;
+      margin-top: 0.9rem;
+    }
+
+    .gate-card input {
+      width: 100%;
+      padding: 0.75rem 0.8rem;
+      border: 2px solid #334876;
+      border-radius: 6px;
+      background: #070d24;
+      color: var(--text);
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .gate-card input:focus {
+      border-color: var(--pink);
+    }
+
+    .gate-card button {
+      padding: 0.75rem 0.9rem;
+      border: 0;
+      border-radius: 6px;
+      background: var(--pink);
+      color: #fff;
+      font-family: "IBM Plex Sans", sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .gate-fout {
+      min-height: 1.2rem;
+      margin: 0;
+      color: #ff7f9d;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 0.85rem;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .chase { animation: none; }
+      .tracker path {
+        animation: none;
+        opacity: 1;
+      }
+      body.locked .poster { transform: none; }
+    }
+  </style>
+</head>
+<body class="locked">
+  <div class="poster" aria-hidden="true">
+    <header>
+      <h1>NATIA'S CSI TRACKER</h1>
+      <img class="chase" src="assets/chase.gif?v=6" alt="Natia's CSI Tracker">
+    </header>
+    <main>
+      <p class="signaal" id="nu">
+        <span class="signaal-tekst" id="nu-tekst"></span>
+        <svg class="tracker" viewBox="0 0 24 24" aria-hidden="true">
+          <circle class="dot" cx="12" cy="19" r="1.6"></circle>
+          <path d="M8.2 15.4a5.4 5.4 0 0 1 7.6 0"></path>
+          <path d="M5.4 12.2a9.4 9.4 0 0 1 13.2 0"></path>
+          <path d="M2.6 9a13.4 13.4 0 0 1 18.8 0"></path>
+        </svg>
+      </p>
+      <ol id="dagen"></ol>
+      <p class="leeg" id="leeg" hidden>Geen werkdagen in de komende weken.</p>
+      <footer id="bijgewerkt"></footer>
+    </main>
+  </div>
+  <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+    <div class="gate-card">
+      <p id="gate-title">Please enter password</p>
+      <form id="gate-form">
+        <input id="gate-ww" type="password" name="password" autocomplete="current-password" placeholder="Password" required>
+        <button type="submit">open site</button>
+        <p class="gate-fout" id="gate-fout" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+  <script id="status" type="application/json">{
+  "updated": "2026-10-29T20:39:39+01:00",
+  "days": [
+    {
+      "date": "2026-10-29",
+      "weekday": "Do",
+      "datum": "29/10",
+      "month": "oktober",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "14u30-23u00",
+          "start": "2026-10-29T14:30:00+01:00",
+          "end": "2026-10-29T23:00:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "weekday": "Vr",
+      "datum": "30/10",
+      "month": "oktober",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "15u30-00u15",
+          "start": "2026-10-30T15:30:00+01:00",
+          "end": "2026-10-31T00:15:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-31",
+      "weekday": "Za",
+      "datum": "31/10",
+      "month": "oktober",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Antwerpen",
+          "uren": "14u00-19u00",
+          "start": "2026-10-31T14:00:00+01:00",
+          "end": "2026-10-31T19:00:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-01",
+      "weekday": "Zo",
+      "datum": "01/11",
+      "month": "november",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Antwerpen",
+          "uren": "14u30-19u30",
+          "start": "2026-11-01T14:30:00+01:00",
+          "end": "2026-11-01T19:30:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-02",
+      "weekday": "Ma",
+      "datum": "02/11",
+      "month": "november",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Antwerpen",
+          "uren": "14u00-19u00",
+          "start": "2026-11-02T14:00:00+01:00",
+          "end": "2026-11-02T19:00:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-03",
+      "weekday": "Di",
+      "datum": "03/11",
+      "month": "november",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u00-18u00",
+          "start": "2026-11-03T10:00:00+01:00",
+          "end": "2026-11-03T18:00:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-04",
+      "weekday": "Wo",
+      "datum": "04/11",
+      "month": "november",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u45-20u15",
+          "start": "2026-11-04T10:45:00+01:00",
+          "end": "2026-11-04T20:15:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-05",
+      "weekday": "Do",
+      "datum": "05/11",
+      "month": "november",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "15u00-23u30",
+          "start": "2026-11-05T15:00:00+01:00",
+          "end": "2026-11-05T23:30:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-06",
+      "weekday": "Vr",
+      "datum": "06/11",
+      "month": "november",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Antwerpen",
+          "uren": "10u45-19u30",
+          "start": "2026-11-06T10:45:00+01:00",
+          "end": "2026-11-06T19:30:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "weekday": "Ma",
+      "datum": "09/11",
+      "month": "november",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Antwerpen",
+          "uren": "10u45-19u30",
+          "start": "2026-11-09T10:45:00+01:00",
+          "end": "2026-11-09T19:30:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "weekday": "Di",
+      "datum": "10/11",
+      "month": "november",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u00-18u00",
+          "start": "2026-11-10T10:00:00+01:00",
+          "end": "2026-11-10T18:00:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-12",
+      "weekday": "Do",
+      "datum": "12/11",
+      "month": "november",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u45-20u15",
+          "start": "2026-11-12T10:45:00+01:00",
+          "end": "2026-11-12T20:15:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-13",
+      "weekday": "Vr",
+      "datum": "13/11",
+      "month": "november",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u45-20u15",
+          "start": "2026-11-13T10:45:00+01:00",
+          "end": "2026-11-13T20:15:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
+      "weekday": "Za",
+      "datum": "14/11",
+      "month": "november",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Antwerpen",
+          "uren": "14u30-19u30",
+          "start": "2026-11-14T14:30:00+01:00",
+          "end": "2026-11-14T19:30:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-15",
+      "weekday": "Zo",
+      "datum": "15/11",
+      "month": "november",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "6u00-14u00",
+          "start": "2026-11-15T06:00:00+01:00",
+          "end": "2026-11-15T14:00:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-16",
+      "weekday": "Ma",
+      "datum": "16/11",
+      "month": "november",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u45-20u15",
+          "start": "2026-11-16T10:45:00+01:00",
+          "end": "2026-11-16T20:15:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-17",
+      "weekday": "Di",
+      "datum": "17/11",
+      "month": "november",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u00-18u00",
+          "start": "2026-11-17T10:00:00+01:00",
+          "end": "2026-11-17T18:00:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-18",
+      "weekday": "Wo",
+      "datum": "18/11",
+      "month": "november",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Antwerpen",
+          "uren": "14u00-19u00",
+          "start": "2026-11-18T14:00:00+01:00",
+          "end": "2026-11-18T19:00:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-19",
+      "weekday": "Do",
+      "datum": "19/11",
+      "month": "november",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u00-18u00",
+          "start": "2026-11-19T10:00:00+01:00",
+          "end": "2026-11-19T18:00:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-20",
+      "weekday": "Vr",
+      "datum": "20/11",
+      "month": "november",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "15u00-23u30",
+          "start": "2026-11-20T15:00:00+01:00",
+          "end": "2026-11-20T23:30:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-21",
+      "weekday": "Za",
+      "datum": "21/11",
+      "month": "november",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "15u00-23u30",
+          "start": "2026-11-21T15:00:00+01:00",
+          "end": "2026-11-21T23:30:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-22",
+      "weekday": "Zo",
+      "datum": "22/11",
+      "month": "november",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "15u00-23u30",
+          "start": "2026-11-22T15:00:00+01:00",
+          "end": "2026-11-22T23:30:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-23",
+      "weekday": "Ma",
+      "datum": "23/11",
+      "month": "november",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u00-18u00",
+          "start": "2026-11-23T10:00:00+01:00",
+          "end": "2026-11-23T18:00:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-24",
+      "weekday": "Di",
+      "datum": "24/11",
+      "month": "november",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u00-18u00",
+          "start": "2026-11-24T10:00:00+01:00",
+          "end": "2026-11-24T18:00:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-25",
+      "weekday": "Wo",
+      "datum": "25/11",
+      "month": "november",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u45-20u15",
+          "start": "2026-11-25T10:45:00+01:00",
+          "end": "2026-11-25T20:15:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-26",
+      "weekday": "Do",
+      "datum": "26/11",
+      "month": "november",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u45-20u15",
+          "start": "2026-11-26T10:45:00+01:00",
+          "end": "2026-11-26T20:15:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "weekday": "Vr",
+      "datum": "27/11",
+      "month": "november",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u45-20u15",
+          "start": "2026-11-27T10:45:00+01:00",
+          "end": "2026-11-27T20:15:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-30",
+      "weekday": "Ma",
+      "datum": "30/11",
+      "month": "november",
+      "year": 2026,
+      "shifts": [
+        {
+          "city": "Antwerpen",
+          "uren": "10u45-19u30",
+          "start": "2026-11-30T10:45:00+01:00",
+          "end": "2026-11-30T19:30:00+01:00"
+        }
+      ]
+    }
+  ]
+}</script>
+  <script>
+    const zone = "Europe/Brussels";
+    const data = JSON.parse(document.getElementById("status").textContent);
+    const GATE_HASH = "5b72fefd791f4cc235df16e80e73c2184a89a0ed88a8e037357e91332e937e40";
+
+    async function sha256(text) {
+      const bytes = new TextEncoder().encode(text);
+      const digest = await crypto.subtle.digest("SHA-256", bytes);
+      return [...new Uint8Array(digest)]
+        .map((byte) => byte.toString(16).padStart(2, "0"))
+        .join("");
+    }
+
+    function unlockSite() {
+      document.body.classList.remove("locked");
+      document.querySelector(".poster")?.removeAttribute("aria-hidden");
+      document.getElementById("gate-ww")?.blur();
+      render();
+    }
+
+    async function tryUnlock(password) {
+      const hash = await sha256(password);
+      if (hash !== GATE_HASH) return false;
+      unlockSite();
+      return true;
+    }
+
+    document.getElementById("gate-form").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const fout = document.getElementById("gate-fout");
+      const input = document.getElementById("gate-ww");
+      const ok = await tryUnlock(input.value);
+      if (ok) {
+        fout.textContent = "";
+        return;
+      }
+      fout.textContent = "Wrong password.";
+      input.select();
+    });
+
+    localStorage.removeItem("csi-tracker-open");
+    queueMicrotask(() => document.getElementById("gate-ww")?.focus());
+
+    function render() {
+      if (document.body.classList.contains("locked")) return;
+      const now = new Date();
+      const list = document.getElementById("dagen");
+      const nuTekst = document.getElementById("nu-tekst");
+      list.replaceChildren();
+
+      let current = null;
+      let next = null;
+      for (const day of data.days) {
+        for (const shift of day.shifts) {
+          const start = new Date(shift.start);
+          const end = new Date(shift.end);
+          if (start <= now && now < end) current = { day, shift };
+          else if (!next && start > now) next = { day, shift };
+        }
+      }
+
+      if (current) {
+        nuTekst.textContent = `Nu in ${current.shift.city}, tot ${current.shift.uren.split("-")[1]}`;
+      } else if (next) {
+        nuTekst.textContent = `Volgende: ${next.day.weekday} ${next.day.datum}, ${next.shift.city}, ${next.shift.uren}`;
+      } else {
+        nuTekst.textContent = "Geen werk meer ingepland.";
+      }
+
+      const empty = document.getElementById("leeg");
+      empty.hidden = data.days.length > 0;
+
+      let lastMonth = "";
+      for (const day of data.days) {
+        const monthKey = `${day.year}-${day.month || day.datum}`;
+        if (day.month && monthKey !== lastMonth) {
+          lastMonth = monthKey;
+          const heading = document.createElement("li");
+          heading.className = "maand";
+          heading.textContent = day.month;
+          list.appendChild(heading);
+        }
+
+        const item = document.createElement("li");
+        const ended = day.shifts.every((shift) => new Date(shift.end) <= now);
+        if (ended) item.classList.add("voorbij");
+
+        const when = document.createElement("span");
+        when.className = "wanneer";
+        when.textContent = `${day.weekday} ${day.datum}`;
+
+        const what = document.createElement("p");
+        what.className = "wat";
+        for (const shift of day.shifts) {
+          const line = document.createElement("span");
+          line.className = shift.city;
+          line.textContent = `${shift.city}: ${shift.uren}`;
+          what.appendChild(line);
+        }
+
+        item.append(when, what);
+        list.appendChild(item);
+      }
+
+      const updated = data.updated
+        ? new Intl.DateTimeFormat("nl-BE", {
+            timeZone: zone,
+            day: "numeric",
+            month: "long",
+            hour: "2-digit",
+            minute: "2-digit",
+          }).format(new Date(data.updated))
+        : "";
+      document.getElementById("bijgewerkt").textContent = updated
+        ? `Laatste scan ${updated}`
+        : "";
+    }
+
+    render();
+  </script>
+</body>
+</html>

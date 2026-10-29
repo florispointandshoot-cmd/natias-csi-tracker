@@ -1,0 +1,50 @@
+name: Rooster bijwerken
+
+on:
+  schedule:
+    # Elke dag om 05:15 UTC (~06:15/07:15 Brussel). Handmatig: Actions → Run workflow.
+    - cron: "15 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Afhankelijkheden
+        run: pip install -r requirements.txt
+
+      - name: Agenda-token
+        env:
+          GOOGLE_TOKEN_JSON: ${{ secrets.GOOGLE_TOKEN_JSON }}
+        run: |
+          if [ -z "$GOOGLE_TOKEN_JSON" ]; then
+            echo "Geheim GOOGLE_TOKEN_JSON ontbreekt. Zie README."
+            exit 1
+          fi
+          printf '%s' "$GOOGLE_TOKEN_JSON" > token.json
+
+      - name: Status schrijven
+        env:
+          TOKEN_PATH: token.json
+        run: python publish_status.py
+
+      - name: Publiceren
+        run: |
+          git add index.html status.json
+          if git diff --cached --quiet; then
+            echo "Rooster ongewijzigd."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Rooster bijgewerkt"
+          git push

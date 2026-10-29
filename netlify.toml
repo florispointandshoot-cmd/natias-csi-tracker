@@ -1,0 +1,3 @@
+[build]
+  publish = "."
+  # Geen build-command: de HTML wordt al door GitHub Actions bijgewerkt.
