@@ -324,32 +324,37 @@ def build_days(events: list[dict], today: dt.date) -> list[dict]:
         grouped.setdefault(key, []).append(shift)
 
     days = []
-    for key in sorted(grouped):
-        day = dt.date.fromisoformat(key)
-        rows = []
-        for shift in grouped[key]:
-            rows.append(
-                {
-                    "city": shift.city,
-                    "uren": f"{fmt_u(shift.start)}-{fmt_u(shift.end)}",
-                    "start": shift.start.isoformat(),
-                    "end": shift.end.isoformat(),
-                }
-            )
+    cursor = today
+    while cursor <= until:
+        key = cursor.isoformat()
+        work = grouped.get(key, [])
+        rows = [
+            {
+                "city": shift.city,
+                "uren": f"{fmt_u(shift.start)}-{fmt_u(shift.end)}",
+                "start": shift.start.isoformat(),
+                "end": shift.end.isoformat(),
+            }
+            for shift in work
+        ]
         days.append(
             {
                 "date": key,
-                "weekday": WEEKDAYS[day.weekday()],
-                "datum": day.strftime("%d/%m"),
-                "month": MONTHS_NL[day.month - 1],
-                "year": day.year,
+                "weekday": WEEKDAYS[cursor.weekday()],
+                "datum": cursor.strftime("%d/%m"),
+                "month": MONTHS_NL[cursor.month - 1],
+                "year": cursor.year,
+                "available": not rows,
                 "shifts": rows,
             }
         )
+        cursor += dt.timedelta(days=1)
     return days
 
 
 def line_for(day: dict) -> str:
+    if day.get("available"):
+        return f"{day['weekday']} {day['datum']}: AVAILABLE"
     parts = [f"{shift['city']}: {shift['uren']}" for shift in day["shifts"]]
     return f"{day['weekday']} {day['datum']}: {', '.join(parts)}"
 
