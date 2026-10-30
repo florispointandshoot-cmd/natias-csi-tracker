@@ -819,6 +819,7 @@
   <script>
     const zone = "Europe/Brussels";
     const data = JSON.parse(document.getElementById("status").textContent);
+    const GATE_KEY = "csi-tracker-open";
     const GATE_HASH = "5b72fefd791f4cc235df16e80e73c2184a89a0ed88a8e037357e91332e937e40";
 
     async function sha256(text) {
@@ -839,6 +840,7 @@
     async function tryUnlock(password) {
       const hash = await sha256(password);
       if (hash !== GATE_HASH) return false;
+      localStorage.setItem(GATE_KEY, GATE_HASH);
       unlockSite();
       return true;
     }
@@ -856,8 +858,11 @@
       input.select();
     });
 
-    localStorage.removeItem("csi-tracker-open");
-    queueMicrotask(() => document.getElementById("gate-ww")?.focus());
+    if (localStorage.getItem(GATE_KEY) === GATE_HASH) {
+      unlockSite();
+    } else {
+      queueMicrotask(() => document.getElementById("gate-ww")?.focus());
+    }
 
     function brusselsDate(moment) {
       return new Intl.DateTimeFormat("en-CA", {

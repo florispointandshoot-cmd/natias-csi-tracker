@@ -28,4 +28,4 @@ Elke dag leest GitHub Actions je Google Calendar en pusht een nieuw rooster. Net
 
 ## Wachtwoord
 
-Client-side gate. Vraagt opnieuw bij elke refresh.
+Client-side gate. Eenmaal juist → onthouden in deze browser (localStorage).
