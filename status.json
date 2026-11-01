@@ -1,22 +1,6 @@
 {
-  "updated": "2026-10-31T11:54:23+01:00",
+  "updated": "2026-11-01T12:48:48+01:00",
   "days": [
-    {
-      "date": "2026-10-31",
-      "weekday": "Za",
-      "datum": "31/10",
-      "month": "oktober",
-      "year": 2026,
-      "available": false,
-      "shifts": [
-        {
-          "city": "Antwerpen",
-          "uren": "14u00-19u00",
-          "start": "2026-10-31T14:00:00+01:00",
-          "end": "2026-10-31T19:00:00+01:00"
-        }
-      ]
-    },
     {
       "date": "2026-11-01",
       "weekday": "Zo",
@@ -461,6 +445,460 @@
           "end": "2026-11-30T19:30:00+01:00"
         }
       ]
+    },
+    {
+      "date": "2026-12-01",
+      "weekday": "Di",
+      "datum": "01/12",
+      "month": "december",
+      "year": 2026,
+      "available": false,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u00-18u00",
+          "start": "2026-12-01T10:00:00+01:00",
+          "end": "2026-12-01T18:00:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-02",
+      "weekday": "Wo",
+      "datum": "02/12",
+      "month": "december",
+      "year": 2026,
+      "available": true,
+      "shifts": []
+    },
+    {
+      "date": "2026-12-03",
+      "weekday": "Do",
+      "datum": "03/12",
+      "month": "december",
+      "year": 2026,
+      "available": false,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "15u00-23u30",
+          "start": "2026-12-03T15:00:00+01:00",
+          "end": "2026-12-03T23:30:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-04",
+      "weekday": "Vr",
+      "datum": "04/12",
+      "month": "december",
+      "year": 2026,
+      "available": false,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u00-18u00",
+          "start": "2026-12-04T10:00:00+01:00",
+          "end": "2026-12-04T18:00:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-05",
+      "weekday": "Za",
+      "datum": "05/12",
+      "month": "december",
+      "year": 2026,
+      "available": false,
+      "shifts": [
+        {
+          "city": "Antwerpen",
+          "uren": "14u00-19u00",
+          "start": "2026-12-05T14:00:00+01:00",
+          "end": "2026-12-05T19:00:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-06",
+      "weekday": "Zo",
+      "datum": "06/12",
+      "month": "december",
+      "year": 2026,
+      "available": false,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "15u30-00u15",
+          "start": "2026-12-06T15:30:00+01:00",
+          "end": "2026-12-07T00:15:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-07",
+      "weekday": "Ma",
+      "datum": "07/12",
+      "month": "december",
+      "year": 2026,
+      "available": false,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "15u00-23u30",
+          "start": "2026-12-07T15:00:00+01:00",
+          "end": "2026-12-07T23:30:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-08",
+      "weekday": "Di",
+      "datum": "08/12",
+      "month": "december",
+      "year": 2026,
+      "available": false,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u00-18u00",
+          "start": "2026-12-08T10:00:00+01:00",
+          "end": "2026-12-08T18:00:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-09",
+      "weekday": "Wo",
+      "datum": "09/12",
+      "month": "december",
+      "year": 2026,
+      "available": false,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u00-18u00",
+          "start": "2026-12-09T10:00:00+01:00",
+          "end": "2026-12-09T18:00:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-10",
+      "weekday": "Do",
+      "datum": "10/12",
+      "month": "december",
+      "year": 2026,
+      "available": false,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "15u30-00u15",
+          "start": "2026-12-10T15:30:00+01:00",
+          "end": "2026-12-11T00:15:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-11",
+      "weekday": "Vr",
+      "datum": "11/12",
+      "month": "december",
+      "year": 2026,
+      "available": false,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u00-18u00",
+          "start": "2026-12-11T10:00:00+01:00",
+          "end": "2026-12-11T18:00:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-12",
+      "weekday": "Za",
+      "datum": "12/12",
+      "month": "december",
+      "year": 2026,
+      "available": false,
+      "shifts": [
+        {
+          "city": "Antwerpen",
+          "uren": "14u30-19u30",
+          "start": "2026-12-12T14:30:00+01:00",
+          "end": "2026-12-12T19:30:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-13",
+      "weekday": "Zo",
+      "datum": "13/12",
+      "month": "december",
+      "year": 2026,
+      "available": false,
+      "shifts": [
+        {
+          "city": "Antwerpen",
+          "uren": "14u00-19u00",
+          "start": "2026-12-13T14:00:00+01:00",
+          "end": "2026-12-13T19:00:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-14",
+      "weekday": "Ma",
+      "datum": "14/12",
+      "month": "december",
+      "year": 2026,
+      "available": false,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u00-18u00",
+          "start": "2026-12-14T10:00:00+01:00",
+          "end": "2026-12-14T18:00:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-15",
+      "weekday": "Di",
+      "datum": "15/12",
+      "month": "december",
+      "year": 2026,
+      "available": false,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u00-18u00",
+          "start": "2026-12-15T10:00:00+01:00",
+          "end": "2026-12-15T18:00:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-16",
+      "weekday": "Wo",
+      "datum": "16/12",
+      "month": "december",
+      "year": 2026,
+      "available": true,
+      "shifts": []
+    },
+    {
+      "date": "2026-12-17",
+      "weekday": "Do",
+      "datum": "17/12",
+      "month": "december",
+      "year": 2026,
+      "available": false,
+      "shifts": [
+        {
+          "city": "Antwerpen",
+          "uren": "14u00-19u00",
+          "start": "2026-12-17T14:00:00+01:00",
+          "end": "2026-12-17T19:00:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-18",
+      "weekday": "Vr",
+      "datum": "18/12",
+      "month": "december",
+      "year": 2026,
+      "available": false,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u45-20u15",
+          "start": "2026-12-18T10:45:00+01:00",
+          "end": "2026-12-18T20:15:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-19",
+      "weekday": "Za",
+      "datum": "19/12",
+      "month": "december",
+      "year": 2026,
+      "available": false,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u45-20u15",
+          "start": "2026-12-19T10:45:00+01:00",
+          "end": "2026-12-19T20:15:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-20",
+      "weekday": "Zo",
+      "datum": "20/12",
+      "month": "december",
+      "year": 2026,
+      "available": false,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u45-20u15",
+          "start": "2026-12-20T10:45:00+01:00",
+          "end": "2026-12-20T20:15:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-21",
+      "weekday": "Ma",
+      "datum": "21/12",
+      "month": "december",
+      "year": 2026,
+      "available": true,
+      "shifts": []
+    },
+    {
+      "date": "2026-12-22",
+      "weekday": "Di",
+      "datum": "22/12",
+      "month": "december",
+      "year": 2026,
+      "available": false,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "15u00-23u30",
+          "start": "2026-12-22T15:00:00+01:00",
+          "end": "2026-12-22T23:30:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-23",
+      "weekday": "Wo",
+      "datum": "23/12",
+      "month": "december",
+      "year": 2026,
+      "available": false,
+      "shifts": [
+        {
+          "city": "Antwerpen",
+          "uren": "14u00-19u00",
+          "start": "2026-12-23T14:00:00+01:00",
+          "end": "2026-12-23T19:00:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-24",
+      "weekday": "Do",
+      "datum": "24/12",
+      "month": "december",
+      "year": 2026,
+      "available": false,
+      "shifts": [
+        {
+          "city": "Antwerpen",
+          "uren": "14u00-19u00",
+          "start": "2026-12-24T14:00:00+01:00",
+          "end": "2026-12-24T19:00:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-25",
+      "weekday": "Vr",
+      "datum": "25/12",
+      "month": "december",
+      "year": 2026,
+      "available": false,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "15u00-23u30",
+          "start": "2026-12-25T15:00:00+01:00",
+          "end": "2026-12-25T23:30:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-26",
+      "weekday": "Za",
+      "datum": "26/12",
+      "month": "december",
+      "year": 2026,
+      "available": true,
+      "shifts": []
+    },
+    {
+      "date": "2026-12-27",
+      "weekday": "Zo",
+      "datum": "27/12",
+      "month": "december",
+      "year": 2026,
+      "available": true,
+      "shifts": []
+    },
+    {
+      "date": "2026-12-28",
+      "weekday": "Ma",
+      "datum": "28/12",
+      "month": "december",
+      "year": 2026,
+      "available": false,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u45-20u15",
+          "start": "2026-12-28T10:45:00+01:00",
+          "end": "2026-12-28T20:15:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-29",
+      "weekday": "Di",
+      "datum": "29/12",
+      "month": "december",
+      "year": 2026,
+      "available": false,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u45-20u15",
+          "start": "2026-12-29T10:45:00+01:00",
+          "end": "2026-12-29T20:15:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-30",
+      "weekday": "Wo",
+      "datum": "30/12",
+      "month": "december",
+      "year": 2026,
+      "available": false,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "10u45-20u15",
+          "start": "2026-12-30T10:45:00+01:00",
+          "end": "2026-12-30T20:15:00+01:00"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-31",
+      "weekday": "Do",
+      "datum": "31/12",
+      "month": "december",
+      "year": 2026,
+      "available": true,
+      "shifts": []
     }
   ]
 }
