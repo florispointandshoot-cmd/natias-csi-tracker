@@ -2,8 +2,8 @@ name: Rooster bijwerken
 
 on:
   schedule:
-    # Elke dag om 05:15 UTC (~06:15/07:15 Brussel). Handmatig: Actions → Run workflow.
-    - cron: "15 5 * * *"
+    # 1× per week: maandag 05:15 UTC (~06:15/07:15 Brussel). Handmatig: Actions → Run workflow.
+    - cron: "15 5 * * 1"
   workflow_dispatch:
 
 permissions:
