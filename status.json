@@ -1,87 +1,14 @@
 {
-  "updated": "2026-11-04T13:57:47+01:00",
+  "updated": "2026-11-09T14:51:27+01:00",
   "days": [
-    {
-      "date": "2026-11-04",
-      "weekday": "Wo",
-      "datum": "04/11",
-      "month": "november",
-      "year": 2026,
-      "available": false,
-      "shifts": [
-        {
-          "city": "Brussel",
-          "uren": "10u45-20u15",
-          "start": "2026-11-04T10:45:00+01:00",
-          "end": "2026-11-04T20:15:00+01:00"
-        }
-      ]
-    },
-    {
-      "date": "2026-11-05",
-      "weekday": "Do",
-      "datum": "05/11",
-      "month": "november",
-      "year": 2026,
-      "available": false,
-      "shifts": [
-        {
-          "city": "Brussel",
-          "uren": "15u00-23u30",
-          "start": "2026-11-05T15:00:00+01:00",
-          "end": "2026-11-05T23:30:00+01:00"
-        }
-      ]
-    },
-    {
-      "date": "2026-11-06",
-      "weekday": "Vr",
-      "datum": "06/11",
-      "month": "november",
-      "year": 2026,
-      "available": false,
-      "shifts": [
-        {
-          "city": "Antwerpen",
-          "uren": "10u45-19u30",
-          "start": "2026-11-06T10:45:00+01:00",
-          "end": "2026-11-06T19:30:00+01:00"
-        }
-      ]
-    },
-    {
-      "date": "2026-11-07",
-      "weekday": "Za",
-      "datum": "07/11",
-      "month": "november",
-      "year": 2026,
-      "available": true,
-      "shifts": []
-    },
-    {
-      "date": "2026-11-08",
-      "weekday": "Zo",
-      "datum": "08/11",
-      "month": "november",
-      "year": 2026,
-      "available": true,
-      "shifts": []
-    },
     {
       "date": "2026-11-09",
       "weekday": "Ma",
       "datum": "09/11",
       "month": "november",
       "year": 2026,
-      "available": false,
-      "shifts": [
-        {
-          "city": "Antwerpen",
-          "uren": "10u45-19u30",
-          "start": "2026-11-09T10:45:00+01:00",
-          "end": "2026-11-09T19:30:00+01:00"
-        }
-      ]
+      "available": true,
+      "shifts": []
     },
     {
       "date": "2026-11-10",
@@ -370,8 +297,15 @@
       "datum": "28/11",
       "month": "november",
       "year": 2026,
-      "available": true,
-      "shifts": []
+      "available": false,
+      "shifts": [
+        {
+          "city": "Antwerpen",
+          "uren": "14u00-19u00",
+          "start": "2026-11-28T14:00:00+01:00",
+          "end": "2026-11-28T19:00:00+01:00"
+        }
+      ]
     },
     {
       "date": "2026-11-29",
