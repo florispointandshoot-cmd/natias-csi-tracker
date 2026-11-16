@@ -1,104 +1,6 @@
 {
-  "updated": "2026-11-09T14:51:27+01:00",
+  "updated": "2026-11-16T14:36:18+01:00",
   "days": [
-    {
-      "date": "2026-11-09",
-      "weekday": "Ma",
-      "datum": "09/11",
-      "month": "november",
-      "year": 2026,
-      "available": true,
-      "shifts": []
-    },
-    {
-      "date": "2026-11-10",
-      "weekday": "Di",
-      "datum": "10/11",
-      "month": "november",
-      "year": 2026,
-      "available": false,
-      "shifts": [
-        {
-          "city": "Brussel",
-          "uren": "10u00-18u00",
-          "start": "2026-11-10T10:00:00+01:00",
-          "end": "2026-11-10T18:00:00+01:00"
-        }
-      ]
-    },
-    {
-      "date": "2026-11-11",
-      "weekday": "Wo",
-      "datum": "11/11",
-      "month": "november",
-      "year": 2026,
-      "available": true,
-      "shifts": []
-    },
-    {
-      "date": "2026-11-12",
-      "weekday": "Do",
-      "datum": "12/11",
-      "month": "november",
-      "year": 2026,
-      "available": false,
-      "shifts": [
-        {
-          "city": "Brussel",
-          "uren": "10u45-20u15",
-          "start": "2026-11-12T10:45:00+01:00",
-          "end": "2026-11-12T20:15:00+01:00"
-        }
-      ]
-    },
-    {
-      "date": "2026-11-13",
-      "weekday": "Vr",
-      "datum": "13/11",
-      "month": "november",
-      "year": 2026,
-      "available": false,
-      "shifts": [
-        {
-          "city": "Brussel",
-          "uren": "10u45-20u15",
-          "start": "2026-11-13T10:45:00+01:00",
-          "end": "2026-11-13T20:15:00+01:00"
-        }
-      ]
-    },
-    {
-      "date": "2026-11-14",
-      "weekday": "Za",
-      "datum": "14/11",
-      "month": "november",
-      "year": 2026,
-      "available": false,
-      "shifts": [
-        {
-          "city": "Antwerpen",
-          "uren": "14u30-19u30",
-          "start": "2026-11-14T14:30:00+01:00",
-          "end": "2026-11-14T19:30:00+01:00"
-        }
-      ]
-    },
-    {
-      "date": "2026-11-15",
-      "weekday": "Zo",
-      "datum": "15/11",
-      "month": "november",
-      "year": 2026,
-      "available": false,
-      "shifts": [
-        {
-          "city": "Brussel",
-          "uren": "6u00-14u00",
-          "start": "2026-11-15T06:00:00+01:00",
-          "end": "2026-11-15T14:00:00+01:00"
-        }
-      ]
-    },
     {
       "date": "2026-11-16",
       "weekday": "Ma",
@@ -109,8 +11,8 @@
       "shifts": [
         {
           "city": "Brussel",
-          "uren": "10u45-20u15",
-          "start": "2026-11-16T10:45:00+01:00",
+          "uren": "10u00-20u15",
+          "start": "2026-11-16T10:00:00+01:00",
           "end": "2026-11-16T20:15:00+01:00"
         }
       ]
@@ -141,9 +43,9 @@
       "shifts": [
         {
           "city": "Antwerpen",
-          "uren": "14u00-19u00",
-          "start": "2026-11-18T14:00:00+01:00",
-          "end": "2026-11-18T19:00:00+01:00"
+          "uren": "10u45-19u30",
+          "start": "2026-11-18T10:45:00+01:00",
+          "end": "2026-11-18T19:30:00+01:00"
         }
       ]
     },
@@ -325,6 +227,12 @@
       "available": false,
       "shifts": [
         {
+          "city": "Brussel",
+          "uren": "10u00-18u00",
+          "start": "2026-11-30T10:00:00+01:00",
+          "end": "2026-11-30T18:00:00+01:00"
+        },
+        {
           "city": "Antwerpen",
           "uren": "10u45-19u30",
           "start": "2026-11-30T10:45:00+01:00",
@@ -431,8 +339,8 @@
       "shifts": [
         {
           "city": "Brussel",
-          "uren": "15u00-23u30",
-          "start": "2026-12-07T15:00:00+01:00",
+          "uren": "10u00-23u30",
+          "start": "2026-12-07T10:00:00+01:00",
           "end": "2026-12-07T23:30:00+01:00"
         }
       ]
@@ -644,8 +552,15 @@
       "datum": "21/12",
       "month": "december",
       "year": 2026,
-      "available": true,
-      "shifts": []
+      "available": false,
+      "shifts": [
+        {
+          "city": "Brussel",
+          "uren": "6u00-18u00",
+          "start": "2026-12-21T06:00:00+01:00",
+          "end": "2026-12-21T18:00:00+01:00"
+        }
+      ]
     },
     {
       "date": "2026-12-22",
@@ -739,8 +654,8 @@
       "shifts": [
         {
           "city": "Brussel",
-          "uren": "10u45-20u15",
-          "start": "2026-12-28T10:45:00+01:00",
+          "uren": "10u00-20u15",
+          "start": "2026-12-28T10:00:00+01:00",
           "end": "2026-12-28T20:15:00+01:00"
         }
       ]
